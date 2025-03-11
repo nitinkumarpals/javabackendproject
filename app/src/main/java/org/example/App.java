@@ -3,11 +3,24 @@
  */
 package org.example;
 
+import org.example.services.UserBookingService;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) {
+        System.out.println("Running Train Booking System");
+        Scanner scanner = new Scanner(System.in);
+        int option = 0;
+        UserBookingService userBookingService;
+        try{
+            userBookingService = new UserBookingService();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
