@@ -33,6 +33,8 @@ public class App {
             System.out.println("6. Cancel my Booking");
             System.out.println("7. Exit the App");
             option = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character left by nextInt()
+            
             switch (option){
                 case 1:
                     System.out.println("Enter your name");
@@ -54,10 +56,26 @@ public class App {
                         System.out.println(e.toString());
                         return;
                     }
+                    break;
                 case 3:
                     System.out.println("fetching your booking");
                     userBookingService.fetchBooking();
-
+                    break;
+                case 4:
+                    System.out.println("Search Trains functionality not implemented yet");
+                    break;
+                case 5:
+                    System.out.println("Book a Seat functionality not implemented yet");
+                    break;
+                case 6:
+                    System.out.println("Cancel my Booking functionality not implemented yet");
+                    break;
+                case 7:
+                    System.out.println("Exiting the application. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
             }
         }
     }
