@@ -14,7 +14,7 @@ public class UserBookingService {
     private User user;
     private List<User> userList;
     private ObjectMapper objectMapper = new ObjectMapper();
-    private static final String USERS_PATH = "../localDb/users.json";
+    private static final String USERS_PATH = "app/src/main/java/org/example/localDb/users.json";
 
     public UserBookingService(User user) throws IOException {
         this.user = user;
@@ -27,8 +27,9 @@ public class UserBookingService {
 
     public List<User> loadUser() throws IOException{
         File users = new File(USERS_PATH);
-        return objectMapper.readValue(users, new TypeReference<List<User>>() {
+        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {
         });
+        return userList;
     }
 
    public Boolean loginUser(){
@@ -38,6 +39,9 @@ public class UserBookingService {
 
     public Boolean signUp(User user1){
         try {
+            if (userList == null) {
+                userList = loadUser();
+            }
             userList.add(user1);
             saveUserListToFile();
             return Boolean.TRUE;
